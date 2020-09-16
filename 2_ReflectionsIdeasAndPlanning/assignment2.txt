@@ -1,0 +1,14 @@
+Kyle Joaquim
+Kyle_Joaquim@student.uml.edu
+
+Assignment 2
+Reflections, Ideas, and Planning
+Mobile App Programming
+
+1. I haven't had any new ideas yet, but I'm interested to see where the class conversation leads us next.
+
+2. Microtransactions are a common way to monetize apps, but these usually deter users because they can make the app feel less functional. Donations can work but are inconsistent, the user needs to feel as though the app is worth paying for after having used it. Wikipedia is the best example of this, they ask for donations in a site banner that only appears occasionally.
+
+3. This site has an excellent UX: https://www.humaninteraction.com/ Colorful, animated backgrounds with huge headers and segments that scale to fill the entire screen of the device are all winning elements; it is both nice to look at and simple to navigate. No pages are cluttered, and design is just a much a priority as function - you can tell that typeface, colors, and element placement were all carefully considered. You can expect as much from most successful brands (Apple, etc).
+
+4. Not quite yet!
