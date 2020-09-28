@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">First App</string>
+    <string name="my_name">Kyle Joaquim</string>
+    <string name="photo_description">Photo of me</string>
+    <string name="reading_list_title">What I\'m Reading</string>
+    <string name="book1">My Struggle: Vol. 2</string>
+    <string name="author1">Karl Ove Knausgard</string>
+    <string name="book2">House of Leaves</string>
+    <string name="author2">Mark Z. Danielewski</string>
+    <string name="book3">We Were the Mulvaneys</string>
+    <string name="author3">Joyce Carol Oates</string>
+    <string name="book4">Because Internet</string>
+    <string name="author4">Gretchen McCulloch</string>
+</resources>
