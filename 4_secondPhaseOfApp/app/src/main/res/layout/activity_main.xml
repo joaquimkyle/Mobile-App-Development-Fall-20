@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="1400dp"
+    android:animationCache="false"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="800dp"
+                    android:contentDescription="@string/photo_description"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/floho_may_shoot_15" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="400dp"
+                    android:fontFamily="@font/days_one"
+                    android:shadowColor="#FFFFFF"
+                    android:text="@string/my_name"
+                    android:textColor="#ECDAD6"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:typeface="monospace" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1200dp"
+                android:background="#ECDAD6">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/reading_list_title"
+                    android:textColor="#556639"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/book1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/header"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/book1"
+                    android:textColor="#556639"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/author1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/book1"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/author1"
+                    android:textColor="#556639"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/book2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author1"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/book2"
+                    android:textColor="#556639"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/author2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/book2"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/author2"
+                    android:textColor="#556639"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/book3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author2"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/book3"
+                    android:textColor="#556639"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/author3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/book3"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/author3"
+                    android:textColor="#556639"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/book4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/author3"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/book4"
+                    android:textColor="#556639"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/author4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/book4"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:fontFamily="@font/days_one"
+                    android:text="@string/author4"
+                    android:textColor="#556639"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
