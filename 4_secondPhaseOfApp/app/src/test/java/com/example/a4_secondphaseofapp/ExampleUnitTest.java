@@ -1,4 +1,4 @@
-package com.example.firstapp;
+package com.example.a4_secondphaseofapp;
 
 import org.junit.Test;
 

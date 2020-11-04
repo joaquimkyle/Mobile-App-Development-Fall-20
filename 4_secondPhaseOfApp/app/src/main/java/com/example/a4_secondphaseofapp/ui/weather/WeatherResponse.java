@@ -1,9 +1,12 @@
-package com.example.firstapp;
+package com.example.a4_secondphaseofapp.ui.weather;
+
+import android.util.Log;
 
 import java.util.List;
+import java.util.Locale;
 
 public class WeatherResponse {
-    private final static String ICON_ADDR = "http://openweathermap.org/img/w/";
+    private final static String ICON_ADDR = "https://openweathermap.org/img/w/";
 
     static class Weather {
         String description;
@@ -11,16 +14,15 @@ public class WeatherResponse {
     }
 
     static class Main {
-        float temp;
+        double temp;
     }
 
     List<Weather> weather;
     Main main;
     String name;
 
-    String getTemperatureInFahrenheit() {
-        float temp = ((main.temp - 273.15f) * (9/5)) + 32;
-        return String.format("%.2f", temp);
+    String getTemperature() {
+        return String.format(Locale.getDefault(), "%.2f", main.temp);
     }
     public String getIconAddress() {
         return ICON_ADDR + weather.get(0).icon + ".png";

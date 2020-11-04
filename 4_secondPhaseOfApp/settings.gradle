@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "First App"
+rootProject.name = "4_secondPhaseOfApp"
