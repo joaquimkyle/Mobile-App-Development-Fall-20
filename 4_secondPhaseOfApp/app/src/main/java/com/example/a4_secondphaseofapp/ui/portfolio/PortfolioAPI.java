@@ -6,7 +6,7 @@ import retrofit2.http.Query;
 
 public interface PortfolioAPI {
     @GET("profile2")
-    Call<PortfolioResponse> getCompany(
+    Call<PortfolioModel> getCompany(
             @Query("symbol") String symbol,
             @Query("token") String token
     );
