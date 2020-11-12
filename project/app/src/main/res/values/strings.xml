@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">todoro</string>
+    <string name="title_work">Work</string>
+    <string name="title_tasks">Tasks</string>
+    <string name="title_routines">Routines</string>
+    <string name="tasks_fab_content_desc">New Task</string>
+    <string name="routines_fab_content_desc">New Routine</string>
+</resources>
