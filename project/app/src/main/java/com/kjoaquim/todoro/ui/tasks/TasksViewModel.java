@@ -1,19 +1,18 @@
 package com.kjoaquim.todoro.ui.tasks;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TasksViewModel extends ViewModel {
+    private List<Task> tasks = new ArrayList<>();
 
-    private MutableLiveData<String> mText;
-
-    public TasksViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is routines fragment");
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

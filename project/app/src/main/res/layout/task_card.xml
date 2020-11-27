@@ -25,9 +25,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/task_description"
-            android:layout_below="@+id/task_name"
+            android:layout_below="@id/task_name"
             android:text="description"
             />
+
+        <Button
+            android:id="@+id/subtask_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/task_description"
+            android:gravity="start|center_vertical"
+            android:padding="0dp"
+            android:text="subtasks"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
     </RelativeLayout>
 

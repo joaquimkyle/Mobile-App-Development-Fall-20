@@ -25,25 +25,24 @@ public class TasksFragment extends Fragment {
     private TasksViewModel tasksViewModel;
     private RecyclerView tasksRecycler;
     private TasksRecyclerViewAdapter tasksRecyclerViewAdapter;
-    private List<Task> tasks;
+
 
     final int REQUEST_CODE = 0;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         tasksViewModel =
-                new ViewModelProvider(this).get(TasksViewModel.class);
+                new ViewModelProvider(requireActivity()).get(TasksViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tasks, container, false);
 
-        tasks = new ArrayList<>();
-        tasksRecycler = (RecyclerView)root.findViewById(R.id.tasks_recycler);
+        tasksRecycler = root.findViewById(R.id.tasks_recycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(container.getContext());
         tasksRecycler.setLayoutManager(linearLayoutManager);
-        tasksRecyclerViewAdapter = new TasksRecyclerViewAdapter(tasks);
+        tasksRecyclerViewAdapter = new TasksRecyclerViewAdapter(tasksViewModel);
         tasksRecycler.setAdapter(tasksRecyclerViewAdapter);
         tasksRecycler.setHasFixedSize(false);
 
-        final FloatingActionButton fab = (FloatingActionButton)root.findViewById(R.id.tasks_fab);
+        final FloatingActionButton fab = root.findViewById(R.id.tasks_fab);
         fab.setOnClickListener(v -> {
             NewTaskDialogFragment newTaskDialogFragment = new NewTaskDialogFragment();
             newTaskDialogFragment.setTargetFragment(this, REQUEST_CODE);
@@ -64,7 +63,7 @@ public class TasksFragment extends Fragment {
 
             Task newTask = new Task(taskName, taskDesc, taskPriority);
             tasksRecyclerViewAdapter.addCard(newTask);
-            tasksRecyclerViewAdapter.notifyItemInserted(tasksRecyclerViewAdapter.tasks.size() - 1);
+            tasksRecyclerViewAdapter.notifyItemInserted(tasksViewModel.getTasks().size() - 1);
         }
     }
 

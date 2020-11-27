@@ -1,45 +1,48 @@
 package com.kjoaquim.todoro.ui.tasks;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.List;
 
 import com.kjoaquim.todoro.R;
+import com.kjoaquim.todoro.ui.tasks.subtasks.SubTasksFragment;
 
-import org.w3c.dom.Text;
 
 public class TasksRecyclerViewAdapter extends RecyclerView.Adapter<TasksRecyclerViewAdapter.TaskViewHolder>{
 
-    List<Task> tasks;
+    TasksViewModel tasksViewModel;
 
-    TasksRecyclerViewAdapter(List<Task> tasks){
-        this.tasks = tasks;
+    TasksRecyclerViewAdapter(TasksViewModel tasksViewModel){
+        this.tasksViewModel = tasksViewModel;
     }
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
         CardView taskCard;
         TextView taskName;
         TextView taskDescription;
+        Button subTaskButton;
 
         TaskViewHolder(View itemView) {
             super(itemView);
             //attach member views to views in the card layout
-            taskCard = (CardView)itemView.findViewById(R.id.task_card);
-            taskName = (TextView)itemView.findViewById(R.id.task_name);
-            taskDescription = (TextView)itemView.findViewById(R.id.task_description);
+            taskCard = itemView.findViewById(R.id.task_card);
+            taskName = itemView.findViewById(R.id.task_name);
+            taskDescription = itemView.findViewById(R.id.task_description);
+            subTaskButton = itemView.findViewById(R.id.subtask_button);
         }
     }
 
     public void addCard(Task task) {
-        tasks.add(task);
+        tasksViewModel.getTasks().add(task);
     }
 
     @NonNull
@@ -52,17 +55,27 @@ public class TasksRecyclerViewAdapter extends RecyclerView.Adapter<TasksRecycler
 
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder taskViewHolder, int position) {
-        taskViewHolder.taskName.setText(tasks.get(position).getName());
-        taskViewHolder.taskDescription.setText(tasks.get(position).getDescription());
+        taskViewHolder.taskName.setText(tasksViewModel.getTasks().get(position).getName());
+        taskViewHolder.taskDescription.setText(tasksViewModel.getTasks().get(position).getDescription());
+        taskViewHolder.subTaskButton.setOnClickListener(v -> {
+            //open subtasks
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            Bundle bundle = new Bundle(1);
+            bundle.putInt("TASK_POSITION", position);
+            SubTasksFragment subTasksFragment = new SubTasksFragment();
+            subTasksFragment.setArguments(bundle);
+            subTasksFragment.show(activity.getSupportFragmentManager(), "subtasks");
+        });
     }
 
     @Override
     public int getItemCount() {
-        return tasks.size();
+        return tasksViewModel.getTasks().size();
     }
 
     @Override
     public void onAttachedToRecyclerView(RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
     }
+
 }
