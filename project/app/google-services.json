@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "652382327481",
+    "project_id": "todoro-1c0d2",
+    "storage_bucket": "todoro-1c0d2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:652382327481:android:25a71aed69ecc4b58ac168",
+        "android_client_info": {
+          "package_name": "com.kjoaquim.todoro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "652382327481-mv3hqb7dsfg1d1n82nhrfrnu0i8fl3sl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIR7pmYT_RkemLwlYkAndmeNQbS9Msqqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "652382327481-mv3hqb7dsfg1d1n82nhrfrnu0i8fl3sl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
