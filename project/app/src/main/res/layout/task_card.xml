@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/task_card"
-    android:layout_margin="10dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
     >
 
     <RelativeLayout
@@ -18,7 +20,6 @@
             android:id="@+id/task_name"
             android:layout_alignParentTop="true"
             android:textSize="30sp"
-            android:text="name"
             />
 
         <TextView
@@ -26,20 +27,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/task_description"
             android:layout_below="@id/task_name"
-            android:text="description"
             />
 
-        <Button
-            android:id="@+id/subtask_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/task_description"
-            android:gravity="start|center_vertical"
-            android:padding="0dp"
-            android:text="subtasks"
-            style="@style/Widget.MaterialComponents.Button.TextButton"/>
-
     </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/color_card"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end" >
+
+        <ImageButton
+            android:id="@+id/task_options"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_baseline_more_vert_24"/>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.cardview.widget.CardView>
 

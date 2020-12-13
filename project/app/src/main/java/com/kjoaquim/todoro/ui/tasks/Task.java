@@ -1,54 +1,41 @@
 package com.kjoaquim.todoro.ui.tasks;
 
-import com.kjoaquim.todoro.ui.tasks.subtasks.SubTask;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Task {
 
-    private String name;
-    private String description;
-    private String priority;
-    private List<SubTask> subTaskList;
+    private String mName;
+    private String mDescription;
+    private String mPriority;
 
-    Task(String name, String description, String priority) {
-        this.name = name;
-        this.description = description;
-        this.priority = priority;
-        this.subTaskList = new ArrayList<>();
+    public Task() { }
+
+    public Task(String name, String description, String priority) {
+        this.mName = name;
+        this.mDescription = description;
+        this.mPriority = priority;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String mName) {
+        this.mName = mName;
     }
 
     public String getDescription() {
-        return description;
+        return mDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription(String mDescription) {
+        this.mDescription = mDescription;
     }
 
     public String getPriority() {
-        return priority;
+        return mPriority;
     }
 
     public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
-    public List<SubTask> getSubTaskList() {
-        return subTaskList;
-    }
-
-    public void setSubTaskList(List<SubTask> subTaskList) {
-        this.subTaskList = subTaskList;
+        this.mPriority = priority;
     }
 
 }

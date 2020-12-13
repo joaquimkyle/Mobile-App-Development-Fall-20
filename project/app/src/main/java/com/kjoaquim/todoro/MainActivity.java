@@ -3,23 +3,30 @@ package com.kjoaquim.todoro;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.AuthUI.IdpConfig;
 import com.firebase.ui.auth.ErrorCodes;
 import com.firebase.ui.auth.IdpResponse;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.kjoaquim.todoro.ui.tasks.TasksFragment;
+import com.kjoaquim.todoro.ui.tasks.NewTaskDialogFragment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -36,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
     FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        MaterialToolbar topAppBar = findViewById(R.id.topAppBar);
+        setSupportActionBar(topAppBar);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -52,11 +62,12 @@ public class MainActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+
     }
 
     @Override
     public void onStart() {
-        super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser == null) { //if no user is signed in, launch sign-in activity
             List<IdpConfig> providers = Arrays.asList(
@@ -73,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         } else { //user is signed in
             //update UI with user data here
         }
+        super.onStart();
     }
 
     @Override
@@ -126,5 +138,47 @@ public class MainActivity extends AppCompatActivity {
     public void showSnackbar(String message) {
         View contextView = findViewById(R.id.nav_view);
         Snackbar.make(contextView, message, Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.top_app_bar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_sign_out) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            if (user.isAnonymous()) { //user has guest account
+                new MaterialAlertDialogBuilder(this)
+                        .setMessage("Would you like to create an account? If you sign out now," +
+                                " all of your data will be lost.")
+                        .setNeutralButton("sign out", (dialog, which) -> {
+                            signOut();
+                        })
+                        .setPositiveButton("create account", (dialog, which) -> {
+                            NewAccountDialogFragment newAccountDialogFragment =
+                                    new NewAccountDialogFragment();
+                            newAccountDialogFragment.show(getSupportFragmentManager(), "new_account");
+                        })
+                        .show();
+            } else {
+                signOut();
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public void signOut() {
+        AuthUI.getInstance() //sign out
+                .signOut(this)
+                .addOnCompleteListener(task -> {
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    finish();
+                });
     }
 }

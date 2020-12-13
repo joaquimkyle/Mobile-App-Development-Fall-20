@@ -19,16 +19,24 @@ import com.kjoaquim.todoro.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class NewTaskDialogFragment extends DialogFragment {
+public class EditTaskDialogFragment extends DialogFragment {
 
     private Toolbar toolbar;
     private TextView taskName;
     private TextView taskDesc;
     private TextView taskPriority;
+    private Task task;
+    private String oldName;
 
+    public static String OLD_NAME = "OLD_NAME";
     public static String TASK_NAME = "TASK_NAME";
     public static String TASK_DESC = "TASK_DESC";
     public static String TASK_PRIORITY = "TASK_PRIORITY";
+
+    public EditTaskDialogFragment(Task task) {
+        this.task = task;
+        oldName = task.getName();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,13 +53,16 @@ public class NewTaskDialogFragment extends DialogFragment {
         AutoCompleteTextView editTextFilledExposedDropdown =
                 root.findViewById(R.id.taskPriorityAutoComplete);
         editTextFilledExposedDropdown.setAdapter(adapter);
-        editTextFilledExposedDropdown.setText(priorities[0], false);
-
-        toolbar = root.findViewById(R.id.new_task_dialog_toolbar);
+        editTextFilledExposedDropdown.setText(task.getPriority(), false);
 
         taskName = root.findViewById(R.id.taskNameField);
         taskDesc = root.findViewById(R.id.taskDescField);
         taskPriority = editTextFilledExposedDropdown;
+
+        taskName.setText(task.getName());
+        taskDesc.setText(task.getDescription());
+
+        toolbar = root.findViewById(R.id.new_task_dialog_toolbar);
 
         return root;
     }
@@ -60,7 +71,7 @@ public class NewTaskDialogFragment extends DialogFragment {
     public void onViewCreated(@NotNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         toolbar.setNavigationOnClickListener(v -> dismiss());
-        toolbar.setTitle("New Task");
+        toolbar.setTitle("Edit Task");
         toolbar.inflateMenu(R.menu.new_data_menu);
         toolbar.setOnMenuItemClickListener(item -> {
             if(!taskName.getText().toString().isEmpty()) {
@@ -93,6 +104,7 @@ public class NewTaskDialogFragment extends DialogFragment {
 
     private void sendData() {
         Intent intent = new Intent();
+        intent.putExtra(OLD_NAME, oldName);
         intent.putExtra(TASK_NAME, taskName.getText().toString());
         intent.putExtra(TASK_DESC, taskDesc.getText().toString());
         intent.putExtra(TASK_PRIORITY, taskPriority.getText().toString());

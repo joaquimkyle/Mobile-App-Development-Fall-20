@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.checkbox.MaterialCheckBox
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/subtask_check"
-    android:checked="false"
-    android:text="" />
+    android:gravity="center_vertical">
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:button="@null"
+        android:background="?android:attr/listChoiceIndicatorMultiple"
+        android:id="@+id/subtask_check" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subtask_name"
+        android:layout_toEndOf="@id/subtask_check"
+        android:layout_alignBottom="@id/subtask_check"
+        android:paddingBottom="10dp"
+        android:textSize="30sp" />
+
+</RelativeLayout>

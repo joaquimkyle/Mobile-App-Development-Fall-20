@@ -1,27 +1,29 @@
 package com.kjoaquim.todoro.ui.tasks.subtasks;
 
 public class SubTask {
-    private String name;
-    private boolean isCompleted;
+    private String mName;
+    private boolean mCompleted;
 
-    SubTask(String name) {
-        this.name = name;
-        this.isCompleted = false;
+    public SubTask() { }
+
+    public SubTask(String name, Boolean completed) {
+        this.mName = name;
+        this.mCompleted = completed;
     }
 
     public String getName() {
-        return name;
+        return mName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.mName = name;
     }
 
     public boolean isCompleted() {
-        return isCompleted;
+        return mCompleted;
     }
 
     public void setCompleted(boolean completed) {
-        isCompleted = completed;
+        mCompleted = completed;
     }
 }
