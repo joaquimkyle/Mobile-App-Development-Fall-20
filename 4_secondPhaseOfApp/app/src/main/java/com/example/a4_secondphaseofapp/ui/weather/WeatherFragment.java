@@ -156,7 +156,7 @@ public class WeatherFragment extends Fragment {
     }
 
     private void checkWeather(final WeatherLiveData weatherLiveData) {
-        String appid = "ec966d69af562febfc5659b20528dbd7";
+        String appid = ""; //removed for security
         String units = "imperial";
         Call call = wapi.getWeather(
                 weatherLiveData.weatherData.getValue().getLonValue(),
